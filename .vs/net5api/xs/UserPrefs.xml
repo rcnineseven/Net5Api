@@ -1,0 +1,27 @@
+﻿<Properties StartupConfiguration="{6765DD83-4B10-4DB5-97A6-0D5B947EA096}|Default">
+  <MonoDevelop.Ide.ItemProperties.net5api PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.Workbench>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="net5api" expanded="True">
+            <Node name="net5api" expanded="True">
+              <Node name="Controllers" expanded="True" />
+              <Node name="DbSettings" expanded="True" />
+              <Node name="Dtos" expanded="True" />
+              <Node name="Entities" expanded="True" />
+              <Node name="Repositories" expanded="True" />
+              <Node name="appsettings.json" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
