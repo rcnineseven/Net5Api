@@ -1,6 +1,10 @@
 ﻿<Properties StartupConfiguration="{6765DD83-4B10-4DB5-97A6-0D5B947EA096}|Default">
   <MonoDevelop.Ide.ItemProperties.net5api PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="Repositories/DbRepository.cs">
+    <Files>
+      <File FileName="Repositories/InMemItemsRepo.cs" Line="1" Column="1" />
+      <File FileName="Repositories/DbRepository.cs" Line="1" Column="1" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
@@ -10,8 +14,9 @@
               <Node name="DbSettings" expanded="True" />
               <Node name="Dtos" expanded="True" />
               <Node name="Entities" expanded="True" />
-              <Node name="Repositories" expanded="True" />
-              <Node name="appsettings.json" selected="True" />
+              <Node name="Repositories" expanded="True">
+                <Node name="DbRepository.cs" selected="True" />
+              </Node>
             </Node>
           </Node>
         </State>

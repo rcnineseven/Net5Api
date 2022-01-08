@@ -17,6 +17,7 @@ namespace net5api.Repositories
 
         public void CreateItem(Item item)
         {
+            /////shouldnt be in main
             MySqlConnection conn;
             try
             {
