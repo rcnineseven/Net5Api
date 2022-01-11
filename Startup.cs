@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -32,9 +33,10 @@ namespace net5api
 
             //interfaceName/className
             //services.AddSingleton<IInMemItemsRepo,InMemItemsRepo>();
+            
+           // services.AddSingleton<IMySqlSettings>(mySqlSettingsInstance);
+            services.AddDbContext<MySqlDbContext>(opt => opt.UseMySQL(mySqlSettingsInstance.connectionString));
             services.AddSingleton<IInMemItemsRepo,DbRepository>();
-            services.AddSingleton<IMySqlSettings>(mySqlSettingsInstance);
-
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

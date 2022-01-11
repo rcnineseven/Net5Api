@@ -4,52 +4,47 @@ using System.Configuration;
 using MySql.Data.MySqlClient;
 using net5api.DbSettings;
 using net5api.Entities;
+using System.Linq;
+
 
 namespace net5api.Repositories
 {
     public class DbRepository : IInMemItemsRepo
     {
-        private IMySqlSettings _mySqlSettings;
-        public DbRepository(IMySqlSettings mySqlSettings)
+       // private IMySqlSettings _mySqlSettings;
+        private MySqlDbContext _mySqlContext;
+        public DbRepository( MySqlDbContext context)
         {
-            _mySqlSettings = mySqlSettings;
+           
+            _mySqlContext = context;
         }
 
         public void CreateItem(Item item)
         {
-            /////shouldnt be in main
-            MySqlConnection conn;
-            try
-            {
-                 conn = new();
-                 conn.ConnectionString = _mySqlSettings.connectionString;
-                 conn.Open();
-                 MySqlCommand comm = new()
-                 {
-                        CommandText = "INSERT INTO TEST.Items (ItemId,Name,Price) VALUES (@ItemId,@Name,@Price)",
-                        Connection = conn
-                 };
-                 comm.Parameters.AddWithValue("@ItemId", item.Id);
-                 comm.Parameters.AddWithValue("@Name", item.Name);
-                 comm.Parameters.AddWithValue("@Price", item.Price);
-                 comm.ExecuteNonQuery();
-                 conn.Close();
-            }
-            catch (Exception ex)
-            {
-                throw new ArgumentException("MYSQL WRONG");
-            }
             
+
+            try {
+            Console.WriteLine("1");
+            _mySqlContext.Items.Add(item);
+            _mySqlContext.SaveChanges();
+            }
+            catch(Exception ex){
+            Console.WriteLine("DB INSERT FAILED");
+            Console.WriteLine(ex.Message);
+            }
         }
 
         public void DeleteItem(Guid guid)
         {
-            throw new NotImplementedException();
+            Item deleteItem = GetItem(guid);
+            _mySqlContext.Items.Remove(deleteItem);
+            _mySqlContext.SaveChanges();
+           
         }
 
         public Item GetItem(Guid guid)
         {
-            throw new NotImplementedException();
+           return _mySqlContext.Items.Where(x => x.ItemId == guid.ToString()).SingleOrDefault();
         }
 
         public IEnumerable<Item> GetItems()

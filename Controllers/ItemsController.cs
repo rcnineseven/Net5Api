@@ -42,7 +42,7 @@ namespace net5api.Controllers{
         [HttpPost]
         public ActionResult<ItemDto> CreateItem(CreateItemDto itemDto){
            Item item = new(){
-               Id= Guid.NewGuid(),
+               ItemId= Guid.NewGuid().ToString(),
                Price = itemDto.Price,
                Name = itemDto.Name,
                CreatedDate = DateTimeOffset.UtcNow
@@ -51,7 +51,7 @@ namespace net5api.Controllers{
             repo.CreateItem(item);
             //return the newly created item and action where we can retrieve it's info
             //returns a 201 created response; **make sure params right! or no route matches values error
-            return CreatedAtAction(nameof(GetItem),new {Guid = item.Id},itemDto);  //item type returned
+            return CreatedAtAction(nameof(GetItem),new {Guid = item.ItemId},itemDto);  //item type returned
         }
 
         //Convention for PUT is to not return anything!
@@ -75,10 +75,10 @@ namespace net5api.Controllers{
         [HttpDelete("{Guid}")]
         public ActionResult DeleteItem(Guid Guid){
 
-            Item item = repo.GetItem(Guid);
-            if(item is null){
-                return NotFound();
-            }
+            // Item item = repo.GetItem(Guid);
+            // if(item is null){
+            //     return NotFound();
+            // }
 
             repo.DeleteItem(Guid);
             return NoContent();

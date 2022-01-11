@@ -5,7 +5,7 @@ namespace net5api{
 
         public static ItemDto AsDto(Item item){
             return new ItemDto{
-                Id = item.Id,
+                Id = item.ItemId,
                 Price = item.Price,
                 Name = item.Name,
                 CreatedDate = item.CreatedDate
